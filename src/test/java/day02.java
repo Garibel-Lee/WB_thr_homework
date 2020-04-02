@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class day02 {
     @Test
+    /*多对一的实体关系维护 采用额外交给框架的额外SQL查询*/
     public void test1(){
         SqlSession session= MybatisUtil.getSession();
         CardMapper cardMapper=session.getMapper(CardMapper.class);
