@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+        namespace="MyBatis.day02.mapper.ReaderMapper">
+
+    <!-- 配置映射字段 -->
+    <resultMap type="Reader" id="ReaderResultMap">
+        <id property="id" column="card_id"/>
+        <result property="name" column="re_name"/>
+        <result property="phone" column="re_phone"/>
+        <!--	<result property="card.id" column="re_card_id"/>-->
+        <!--	额外SQL 代理手动调用 配置方式-->
+        <association property="card" javaType="Card"
+                     select="MyBatis.day02.mapper.CardMapper.queryById"
+                     column="re_card_id"
+        />
+
+    </resultMap>
+    <!--many2one-->
+    <select id="queryForList" resultMap="ReaderResultMap">
+		 SELECT  re_id, re_name,re_phone, re_card_id FROM t_Reader
+	</select>
+</mapper>

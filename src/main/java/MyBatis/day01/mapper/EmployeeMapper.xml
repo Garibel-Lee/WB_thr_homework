@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="MyBatis.day01.mapper.EmployeeMapper">
+	<!--动态sql 拼接-->
+	<select id="query" resultType="Employee">
+		select id ,name ,sn,salary,deptId from employee
+		<where>
+			<if test="minSalary!=null">
+				ANd salary >=#{minSalary}
+			</if>
+			<if test="maxSalary!=null">
+				AND salary &lt;=#{maxSalary}
+			</if>
+			<if test="deptId > 0">
+				and deptId &lt;=#{deptId}
+			</if>
+
+			<choose>
+				<when test="deptId >0">AND deptId =#{deptId}</when>
+				<otherwise>AND deptId is not NULL </otherwise>
+			</choose>
+		</where>
+	</select>
+
+	<select id="queryForList"  resultType="Employee">
+		select id,name,sn,salary,deptId from employee
+		<where>
+			<if test="keyword!=null">
+				AND name Like concat('%',#{keyword},'%') OR sn Like concat('%',#{keyword}) 
+			</if>
+			
+		</where>
+	</select>
+</mapper>

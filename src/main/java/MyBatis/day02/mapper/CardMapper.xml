@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="MyBatis.day02.mapper.CardMapper">
+
+	<!-- 配置映射字段 -->
+	<resultMap type="Card" id="cardResultMap">
+		<id property="id" column="card_id"/>
+		<result property="type" column="card_type"/>
+		<result property="state" column="card_state"/>
+	</resultMap>
+
+
+	<!--many2one-->
+	<select id="queryById"  resultMap="cardResultMap">
+		 SELECT  card_id, card_type, card_state FROM t_Card where card_id=#{id}
+	</select>
+</mapper>

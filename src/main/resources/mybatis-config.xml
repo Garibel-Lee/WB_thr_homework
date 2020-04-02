@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties"/>
+
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="MyBatis.day01.util.MybatisUtil" alias="util"/>
+		<package name="MyBatis.day01.domain"/>
+		<package name="MyBatis.day02.domain"/>
+
+	</typeAliases>
+	<!-- 配置数据库环境 -->
+	<environments default="dev">
+		<!-- 开发环境 -->		
+		<environment id="dev">
+			<transactionManager type="JDBC">
+			</transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url"
+					value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+		<!-- 测试环境 -->
+		<!-- <environment id=""> </environment> -->
+	</environments>
+	<mappers>
+		<mapper resource="MyBatis/day01/mapper/EmployeeMapper.xml" />
+		<mapper resource="MyBatis/day02/mapper/ReaderMapper.xml" />
+		<mapper resource="MyBatis/day02/mapper/CardMapper.xml" />
+	</mappers>
+</configuration>
