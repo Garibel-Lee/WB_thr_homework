@@ -9,10 +9,10 @@
 		<setting name="logImpl" value="LOG4J" />
 	</settings>
 	<typeAliases>
-		<typeAlias type="MyBatis.day01.util.MybatisUtil" alias="util"/>
+		<typeAlias type="MyBatis.util.MybatisUtil" alias="util"/>
 		<package name="MyBatis.day01.domain"/>
 		<package name="MyBatis.day02.domain"/>
-
+		<package name="MyBatis.day03.domain"/>
 	</typeAliases>
 	<!-- 配置数据库环境 -->
 	<environments default="dev">
@@ -35,5 +35,10 @@
 		<mapper resource="MyBatis/day01/mapper/EmployeeMapper.xml" />
 		<mapper resource="MyBatis/day02/mapper/ReaderMapper.xml" />
 		<mapper resource="MyBatis/day02/mapper/CardMapper.xml" />
+		<mapper resource="MyBatis/day03/mapper/TBankCardMapper.xml" />
+		<mapper resource="MyBatis/day03/mapper/TStudentMapper.xml"/>
+		<mapper resource="MyBatis/day03/mapper/TStudent2Mapper.xml"/>
+		<mapper resource="MyBatis/day03/mapper/TScoreMapper.xml"/>
+		<mapper resource="MyBatis/day03/mapper/TSubjectMapper.xml"/>
 	</mappers>
 </configuration>

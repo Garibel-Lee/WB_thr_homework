@@ -1,7 +1,6 @@
 import MyBatis.day02.domain.Reader;
-import MyBatis.day02.mapper.CardMapper;
 import MyBatis.day02.mapper.ReaderMapper;
-import MyBatis.day02.util.MybatisUtil;
+import MyBatis.util.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -18,7 +17,6 @@ public class day02 {
     /*多对一的实体关系维护 采用额外交给框架的额外SQL查询*/
     public void test1(){
         SqlSession session= MybatisUtil.getSession();
-        CardMapper cardMapper=session.getMapper(CardMapper.class);
         ReaderMapper readerMapper=session.getMapper(ReaderMapper.class);
 
         List<Reader>  list=readerMapper.queryForList();

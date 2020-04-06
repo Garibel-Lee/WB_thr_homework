@@ -11,4 +11,6 @@ import java.util.List;
 public interface ReaderMapper {
 
 	List<Reader> queryForList();
+
+	Reader queryById(Integer id);
 }

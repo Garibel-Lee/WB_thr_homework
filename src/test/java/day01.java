@@ -1,7 +1,7 @@
 import MyBatis.day01.domain.Employee;
 import MyBatis.day01.mapper.EmployeeMapper;
 import MyBatis.day01.query.EmployeeQueryObject;
-import MyBatis.day01.util.MybatisUtil;
+import MyBatis.util.MybatisUtil;
 import org.junit.Test;
 
 import java.math.BigDecimal;

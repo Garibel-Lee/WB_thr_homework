@@ -17,4 +17,6 @@
 	<select id="queryById"  resultMap="cardResultMap">
 		 SELECT  card_id, card_type, card_state FROM t_Card where card_id=#{id}
 	</select>
+
+
 </mapper>

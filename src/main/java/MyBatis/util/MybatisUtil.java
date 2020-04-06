@@ -1,4 +1,4 @@
-package MyBatis.day02.util;
+package MyBatis.util;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

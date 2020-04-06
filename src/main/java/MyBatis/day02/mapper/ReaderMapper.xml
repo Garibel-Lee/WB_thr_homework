@@ -6,7 +6,7 @@
         namespace="MyBatis.day02.mapper.ReaderMapper">
 
     <!-- 配置映射字段 -->
-    <resultMap type="Reader" id="ReaderResultMap">
+    <resultMap  id="ReaderResultMap" type="Reader">
         <id property="id" column="card_id"/>
         <result property="name" column="re_name"/>
         <result property="phone" column="re_phone"/>
@@ -16,10 +16,16 @@
                      select="MyBatis.day02.mapper.CardMapper.queryById"
                      column="re_card_id"
         />
-
     </resultMap>
     <!--many2one-->
     <select id="queryForList" resultMap="ReaderResultMap">
 		 SELECT  re_id, re_name,re_phone, re_card_id FROM t_Reader
 	</select>
+
+    <select id="queryById" resultType="MyBatis.day02.domain.Reader">
+            SELECT  re_id,re_name,re_phone,re_card_id from t_Reader
+        where re_id=#{id}
+    </select>
+
+
 </mapper>

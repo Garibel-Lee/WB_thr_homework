@@ -9,13 +9,13 @@
 		select id ,name ,sn,salary,deptId from employee
 		<where>
 			<if test="minSalary!=null">
-				ANd salary >=#{minSalary}
+				AND salary >=#{minSalary}
 			</if>
 			<if test="maxSalary!=null">
 				AND salary &lt;=#{maxSalary}
 			</if>
-			<if test="deptId > 0">
-				and deptId &lt;=#{deptId}
+			<if test="deptId > 0" >
+				AND deptId &lt;=#{deptId}
 			</if>
 
 			<choose>
