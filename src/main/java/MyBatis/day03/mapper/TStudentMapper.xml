@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MyBatis.day03.mapper.TStudentMapper">
+  <resultMap id="BaseResultMap" type="MyBatis.day03.domain.TStudent">
+    <!--@mbg.generated-->
+    <!--@Table t_student-->
+    <id column="st_id" jdbcType="INTEGER" property="stId" />
+    <result column="st_name" jdbcType="VARCHAR" property="stName" />
+    <result column="st_sex" jdbcType="VARCHAR" property="stSex" />
+  </resultMap>
+
+
+  <resultMap id="StuAndCardResultMap" type="MyBatis.day03.domain.TStudent" extends="BaseResultMap">
+        <collection  property="cards" ofType="MyBatis.day03.domain.TBankCard" column="st_id" fetchType="lazy"
+                    select="MyBatis.day03.mapper.TBankCardMapper.selectByStuId"></collection>
+  </resultMap>
+
+
+
+
+  <select id="getStuAndTBankCards" resultMap="StuAndCardResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from t_student
+      where st_id = #{stId,jdbcType=INTEGER}
+  </select>
+
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    st_id, st_name, st_sex
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_student
+    where st_id = #{stId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_student
+    where st_id = #{stId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="st_id" keyProperty="stId" parameterType="MyBatis.day03.domain.TStudent" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_student (st_name, st_sex)
+    values (#{stName,jdbcType=VARCHAR}, #{stSex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="st_id" keyProperty="stId" parameterType="MyBatis.day03.domain.TStudent" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stName != null">
+        st_name,
+      </if>
+      <if test="stSex != null">
+        st_sex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stName != null">
+        #{stName,jdbcType=VARCHAR},
+      </if>
+      <if test="stSex != null">
+        #{stSex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="MyBatis.day03.domain.TStudent">
+    <!--@mbg.generated-->
+    update t_student
+    <set>
+      <if test="stName != null">
+        st_name = #{stName,jdbcType=VARCHAR},
+      </if>
+      <if test="stSex != null">
+        st_sex = #{stSex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where st_id = #{stId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="MyBatis.day03.domain.TStudent">
+    <!--@mbg.generated-->
+    update t_student
+    set st_name = #{stName,jdbcType=VARCHAR},
+      st_sex = #{stSex,jdbcType=VARCHAR}
+    where st_id = #{stId,jdbcType=INTEGER}
+  </update>
+
+
+</mapper>

@@ -40,5 +40,8 @@
 		<mapper resource="MyBatis/day03/mapper/TStudent2Mapper.xml"/>
 		<mapper resource="MyBatis/day03/mapper/TScoreMapper.xml"/>
 		<mapper resource="MyBatis/day03/mapper/TSubjectMapper.xml"/>
+		<mapper resource="MyBatis/day04/mapper/TStudent2Mapper.xml"/>
+		<mapper resource="MyBatis/day04/mapper/TScoreMapper.xml"/>
+		<mapper resource="MyBatis/day04/mapper/TSubjectMapper.xml"/>
 	</mappers>
 </configuration>
